@@ -1,0 +1,18 @@
+[project]
+name = "smart-plant"
+version = "0.1.0"
+description = "Автоматизированное растение с автополивом, камерой и Telegram-ботом"
+authors = ["Your Name <your@email.com>"]
+requires-python = ">=3.10"
+dependencies = [
+    "python-telegram-bot==20.3",
+    "python-dotenv",
+    "apscheduler"
+]
+
+[tool.setuptools.packages.find]
+where = ["app"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

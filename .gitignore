@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.log
+
+# Environment
+.venv/
+.env
+.env.*
+
+# Data & logs
+logs/
+data/photos/
+
+# IDEs & tools
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.container
+*.pid
+*.sock
+docker-compose.override.yml
+
+# Misc
+*.bak
+*.tmp
+*.orig
+.DS_Store
+
+# Build
+build/
+dist/
+*.egg-info/

@@ -23,6 +23,9 @@ class PumpService:
         # Logic to stop the pump
         print("Pump stopped.")
 
+    def __del__(self):
+        GPIO.cleanup()
+
 
 if __name__ == "__main__":
     pump_service = PumpService()
@@ -31,5 +34,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Pump service interrupted.")
         pump_service.stop_pump()
-    finally:
-        GPIO.cleanup()  # Clean up GPIO settings

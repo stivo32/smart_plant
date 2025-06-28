@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "id": "moisture_check",
+      "func": "app.moisture_sensor.moisture_sensor.read_moisture",
+      "trigger": "interval",
+      "seconds": 300
+    },
+    {
+      "id": "take_photo",
+      "func": "app.camera.camera_service.take_picture",
+      "trigger": "cron",
+      "hour": 10,
+      "minute": 0
+    },
+    {
+      "id": "start_pump",
+      "func": "app.pump.pump_service.do_watering",
+      "trigger": "cron",
+      "hour": 10,
+      "minute": 5
+    }
+  ]
+}

@@ -4,4 +4,6 @@ python-dotenv
 pydantic
 adafruit-blinka==8.61.2
 adafruit-circuitpython-mcp3xxx==1.4.21
-
+sqlalchemy
+alembic
+pyyaml

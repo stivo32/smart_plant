@@ -6,6 +6,10 @@ import board
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
+from app.storage.action_logger import log_action
+from app.storage.models import MoistureSensorData
+from app.db import session_factory
+
 
 class MoistureSensor:
     def __init__(self):
@@ -19,12 +23,21 @@ class MoistureSensor:
         mcp = MCP.MCP3008(spi, cs)
         self.channel = AnalogIn(mcp, MCP.P0)
 
+    @log_action
     def read_moisture(self):
         self.gpio.value = True  # Включить питание датчика
         time.sleep(0.1)    # Ждем стабилизации (100 мс)
         value = self.channel.value
         self.gpio.value = False  # Выключить питание
-        return self.convert_to_percentage(value)
+        percent = self.convert_to_percentage(value)
+        with session_factory() as session:
+            moisture_data = MoistureSensorData(
+                moisture_level=value,
+                moisture_percentage=percent
+            )
+            session.add(moisture_data)
+            session.commit()
+        return percent
 
 
     def convert_to_percentage(self, value: int) -> float:
@@ -37,6 +50,13 @@ class MoistureSensor:
             return 0.0
         return ((DRY - value) / (DRY - WATER)) * 100
 
+
+
+def read_moisture() -> None:
+    moisture_sensor = MoistureSensor()
+    print("Reading moisture level...")
+    moisture_sensor.read_moisture()
+    
 
 if __name__ == "__main__":
     sensor = MoistureSensor()

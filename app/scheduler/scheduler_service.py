@@ -1,23 +1,18 @@
-import os
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.util import ref_to_obj
+from app.config import SCHEDULER_CONFIG_FILE
 
-CONFIG_PATH = "tasks.json"
 
 class SchedulerService:
     def __init__(self):
         self.scheduler = BackgroundScheduler()
-        self.config = self._load_or_create_config()
+        self.config = self._load_config()
 
-    def _load_or_create_config(self):
-        if not os.path.exists(CONFIG_PATH):
-            default_config = {"jobs": []}
-            with open(CONFIG_PATH, "w") as f:
-                json.dump(default_config, f, indent=2)
-            return default_config
-        with open(CONFIG_PATH) as f:
-            return json.load(f)
+    def _load_config(self):
+        if not SCHEDULER_CONFIG_FILE.exists():
+            raise FileNotFoundError(f"Scheduler config file not found: {SCHEDULER_CONFIG_FILE}")
+        return json.loads(SCHEDULER_CONFIG_FILE.read_text())
         
     def setup_jobs(self):
         for job in self.config.get("jobs", []):

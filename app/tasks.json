@@ -11,6 +11,12 @@
       "func": "app.pump.pump_service:do_watering",
       "trigger": "cron",
       "hour": 21
+    },
+        {
+      "id": "capture_image",
+      "func": "app.camera.camera_service:capture_image",
+      "trigger": "cron",
+      "hour": 10
     }
   ]
 }

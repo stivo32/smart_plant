@@ -4,6 +4,7 @@ import datetime
 import pathlib
 
 from app.config import PHOTO_STORAGE_PATH
+from app.storage.action_logger import log_action
 
 
 class CameraService:
@@ -12,7 +13,7 @@ class CameraService:
         self.config = self.picam2.create_still_configuration(main={"size": (4056, 3040)})
         self.picam2.configure(self.config)
 
-
+    @log_action
     def capture_image(self) -> None:
         now = datetime.datetime.now()
         filename = f"photo_{now.strftime('%Y%m%d_%H%M%S')}.jpg"
@@ -23,6 +24,13 @@ class CameraService:
 
     def __del__(self):
         self.picam2.close()
+
+
+def capture_image():
+    camera_service = CameraService()
+    print("Capturing image...")
+    camera_service.capture_image()
+    print("Image captured successfully.")
 
 
 if __name__ == "__main__":

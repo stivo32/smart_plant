@@ -3,8 +3,8 @@ from time import sleep
 import datetime
 import pathlib
 
-from app.config import PHOTO_STORAGE_PATH
-from app.storage.action_logger import log_action
+from smart_plant.config import PHOTO_STORAGE_PATH
+from smart_plant.storage.action_logger import log_action
 
 
 class CameraService:

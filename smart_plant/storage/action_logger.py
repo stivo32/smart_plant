@@ -2,8 +2,8 @@
 import datetime
 import functools
 
-from app.storage.models import Actions
-from app.db import session_factory
+from smart_plant.storage.models import Actions
+from smart_plant.db import session_factory
 
 
 def log_action(func):

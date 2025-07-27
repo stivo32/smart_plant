@@ -1,7 +1,7 @@
 import datetime
 from sqlalchemy import Column, DateTime, Float, Integer, String
 
-from app.db import Base
+from smart_plant.db import Base
 
 
 class Actions(Base):

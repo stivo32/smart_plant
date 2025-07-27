@@ -1,7 +1,7 @@
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.util import ref_to_obj
-from app.config import SCHEDULER_CONFIG_FILE
+from smart_plant.config import SCHEDULER_CONFIG_FILE
 
 
 class SchedulerService:

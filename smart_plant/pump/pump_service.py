@@ -3,9 +3,9 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 
-from app.storage.action_logger import log_action
-from app.storage.models import MoistureSensorData, Pump
-from app.db import session_factory
+from smart_plant.storage.action_logger import log_action
+from smart_plant.storage.models import MoistureSensorData, Pump
+from smart_plant.db import session_factory
 
 
 class PumpService:

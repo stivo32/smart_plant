@@ -2,19 +2,19 @@
   "jobs": [
     {
       "id": "moisture_check",
-      "func": "app.moisture_sensor.moisture_sensor:read_moisture",
+      "func": "smart_plant.moisture_sensor.moisture_sensor:read_moisture",
       "trigger": "interval",
       "minutes": 60
     },
     {
       "id": "start_pump",
-      "func": "app.pump.pump_service:do_watering",
+      "func": "smart_plant.pump.pump_service:do_watering",
       "trigger": "cron",
       "hour": 21
     },
         {
       "id": "capture_image",
-      "func": "app.camera.camera_service:capture_image",
+      "func": "smart_plant.camera.camera_service:capture_image",
       "trigger": "cron",
       "hour": 10
     }

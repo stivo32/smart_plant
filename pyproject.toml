@@ -1,0 +1,29 @@
+[project]
+name = "smart-plant"
+version = "0.1.0"
+description = "Smart plant with autowatering on Raspberry Pi"
+authors = [{ name = "stivo32", email = "stivo32@dummy_email.com" }]
+dependencies = [
+    "APScheduler==3.11.0",
+    "python-telegram-bot==20.3",
+    "python-dotenv==0.21.0",
+    "pydantic==2.11.7",
+    "adafruit-blinka==8.61.2",
+    "adafruit-circuitpython-mcp3xxx==1.4.21",
+    "SQLAlchemy==2.0.41",
+    "alembic==1.16.4",
+    "PyYAML==6.0.2",
+    "typer[all]>=0.16.0"
+]
+requires-python = ">=3.11"
+
+[project.scripts]
+smart_plant = "smart_plant.main:app"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["smart_plant*"]

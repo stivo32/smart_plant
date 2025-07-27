@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from app.config import DB_FILE
+from smart_plant.config import DB_FILE
 
 Base = declarative_base()
 

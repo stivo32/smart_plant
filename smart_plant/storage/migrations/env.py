@@ -10,8 +10,8 @@ from alembic import context
 
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[3]))
 
-from app.db import Base
-from app.storage import models
+from smart_plant.db import Base
+from smart_plant.storage import models
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

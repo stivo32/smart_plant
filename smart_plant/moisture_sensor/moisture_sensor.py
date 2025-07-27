@@ -6,9 +6,9 @@ import board
 import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
-from app.storage.action_logger import log_action
-from app.storage.models import MoistureSensorData
-from app.db import session_factory
+from smart_plant.storage.action_logger import log_action
+from smart_plant.storage.models import MoistureSensorData
+from smart_plant.db import session_factory
 
 
 class MoistureSensor:
